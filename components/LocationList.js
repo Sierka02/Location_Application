@@ -1,14 +1,13 @@
-import { FlatList, FlatListComponent, ScrollView } from "react-native";
-import { List } from "react-native-paper";
+import { FlatList } from "react-native";
 import LocationItem from "./LocationItem";
 
-export default function LocationList({locations}) {
-
- const savedLocation = []
-
- 
+    
+export default function LocationList({ locations = [] }) {
 
     return(
-        <FlatList data={locations} renderItem={({item}) => <LocationItem  locationItem={item}/>}/>
+         <FlatList keyExtractor={(item) => item.id.toString()} data={locations} renderItem={({item}) => <LocationItem  locationItem={item}/>}/>
     )
+
 }
+
+

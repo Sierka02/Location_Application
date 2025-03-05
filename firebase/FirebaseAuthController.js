@@ -11,11 +11,11 @@ export function useFireAuth() {
         onAuthStateChanged(auth, user => {
             setUser(user)
             if(user){
-                const subcolref = collection(db, USERS_REF, user.uid, LOCATIONS_REF)
+                const subcolref = collection(db, LOCATIONS_REF)
                 onSnapshot(subcolref, QuerySnapshot => {
-                    setLocations(QuerySnapshot.docs.map(doc => {
-                        return { id: doc.id, ...doc.data}
-                    }))
+                    setLocations(QuerySnapshot.docs.map(doc => ({
+                         id: doc.id, ...doc.data
+                    })))
                 })
             }
         })
