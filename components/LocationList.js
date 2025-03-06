@@ -4,15 +4,11 @@ import LocationItem from "./LocationItem";
 
 export default function LocationList({locations}) {
 
+ const savedLocation = []
 
+ 
 
     return(
-        <FlatList data={locations} renderItem={({location}) => <LocationItem locationItem={item}/>}/>
+        <FlatList data={locations} renderItem={({item}) => <LocationItem  locationItem={item}/>}/>
     )
-}
-
-function AccorrdionList({locations, title}) {
-    <List.Accordion>
-        {locations.map(t => <LocationItem key={t.id} locationItem={t}/>)}
-    </List.Accordion>
 }

@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { Button, PaperProvider, TextInput } from "react-native-paper"
 import StarRating from "react-native-star-rating-widget"
 import { addLocation } from "../firebase/FirestoreController"
+import LocationList from "../components/LocationList"
 
 
 export default function LocationsView() {
@@ -29,6 +30,7 @@ export default function LocationsView() {
          onChange={setRating}
         />
 
+      <LocationList locations={locations}/>
   
         <Button mode='contained' onPress={() => addLocation(name, description)}>Add new location</Button>
   

@@ -8,7 +8,7 @@ export function useFireLocations() {
     const [locations, setLocations] = useState([])
 
     useEffect(() => {
-        const q = query(collection(db, LOCATIONS_REF), orderBy('locationsText'))
+        const q = query(collection(db, LOCATIONS_REF), orderBy('locationText'))
 
         onSnapshot(q, QuerySnapshot => {
             setLocations(QuerySnapshot.docs.map(doc=> {
@@ -19,7 +19,7 @@ export function useFireLocations() {
     
 }   
 
-export function addLocation(locationText) {
-    addDoc( collection(db, LOCATIONS_REF), {locationText} )
+export function addLocation(locationText, locationDesc) {
+    addDoc( collection(db, LOCATIONS_REF), { locationDesc: locationDesc, locationText: locationText})
     .catch(error => console.log(error.message))
 }
