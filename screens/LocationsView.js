@@ -9,6 +9,7 @@ import LocationList from "../components/LocationList"
 
 export default function LocationsView() {
 
+  
     const [name, setName] = useState()
     const [description, setDescription] = useState()
     const [rating, setRating] = useState(0)
