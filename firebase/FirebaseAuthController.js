@@ -40,6 +40,7 @@ export async function loginUser(email, password){
 }
 
 
+
 export function logoutUser() {
     signOut(auth)
         .catch(error => console.log(error.message))

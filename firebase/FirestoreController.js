@@ -23,15 +23,15 @@ export function useFireLocations() {
 
 export function addLocation(locationText, locationDesc, rating) {
 
-   
+    if (typeof locationText !== 'string' || typeof locationDesc !== 'string' || typeof rating !== 'number') {
+        console.error("Invalid data types: ", { locationText, locationDesc, rating });
+        return;
+    }
+
     const subColRef = collection (db, USERS_REF, auth.currentUser.uid, LOCATIONS_REF)
     addDoc( subColRef, { locationText, locationDesc, rating })
-        .catch(error => console.log(error)
-        )
-
-        console.log("locationText type: ", typeof locationText);  // Should log "string"
-    console.log("locationText value: ", locationText)
-    
+        .catch(error => console.log(error))
+         
 
 }
 

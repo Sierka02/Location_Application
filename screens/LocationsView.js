@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { use, useContext, useState } from "react"
 import { UserLocationsContext } from "../contexts/UserLocationsContext"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Button, PaperProvider, TextInput } from "react-native-paper"
@@ -13,6 +13,7 @@ export default function LocationsView() {
     const [name, setName] = useState()
     const [description, setDescription] = useState()
     const [rating, setRating] = useState(0)
+    const [location, setLocation] = useState('')
 
 
     const locations = useContext(UserLocationsContext)
@@ -27,7 +28,7 @@ export default function LocationsView() {
 
         <TextInput keyboardType="number-pad" label={'rating /5'} value={rating} onChangeText={setRating}/>
 
-          <Button mode='contained' onPress={addLocation}>Add new location</Button>
+          <Button mode='contained' onPress={() => addLocation(name, description, parseFloat(rating) || 0)}>Add new location</Button>
 
 
       <LocationList locations={locations}/>
