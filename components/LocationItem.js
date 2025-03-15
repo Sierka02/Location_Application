@@ -1,16 +1,18 @@
-import { View, Text } from "react-native";
-import StarRating from "react-native-star-rating-widget";
+import { View, Text, StyleSheet } from "react-native";
 
 
     
 export default function LocationItem({ locationItem }) {
 
 
+    
+
     return(
 
 
 
-        <View>
+
+        <View style={styles.todoItem}>
                 
 
                 <Text>{locationItem.locationText}</Text>
@@ -21,3 +23,13 @@ export default function LocationItem({ locationItem }) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    todoItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 5,
+        marginVertical: 5
+    }
+    
+})

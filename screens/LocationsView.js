@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { Button, PaperProvider, TextInput } from "react-native-paper"
 import { addLocation } from "../firebase/FirestoreController"
 import LocationList from "../components/LocationList"
-import { StyleSheet } from "react-native"
+import { StyleSheet, View } from "react-native"
 
 
 export default function LocationsView() {
@@ -18,29 +18,21 @@ export default function LocationsView() {
     const locations = useContext(UserLocationsContext)
   
 
-    const handleAddLocation = () => {
-      addLocation(name, description, rating)
-    }
-    console.log(locations);
-
     return(
   
-      <PaperProvider>
-      <SafeAreaView style={styles.LocationsStyle}>
+    <View style={styles.LocationsStyle}>
+      
         <TextInput label={'Name'} value={name} onChangeText={setName}/>
         <TextInput label={'Description'} value={description} onChangeText={setDescription}/>
 
         <TextInput keyboardType="number-pad" label={'rating /5'} value={rating} onChangeText={setRating}/>
 
-          <Button mode='contained' onPress={handleAddLocation}>Add new location</Button>
+          <Button mode='contained' onPress={addLocation}>Add new location</Button>
 
 
       <LocationList locations={locations}/>
   
-      
-  
-      </SafeAreaView>
-      </PaperProvider>
+      </View>
     )
   
 

@@ -19,6 +19,7 @@ export default function App() {
   const [user, locations] = useFireAuth()
 
 
+
 return(
   <UserLocationsContext.Provider value={locations}>
     <LocationsContext.Provider value={user}>

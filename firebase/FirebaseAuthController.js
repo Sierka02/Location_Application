@@ -11,11 +11,11 @@ export function useFireAuth() {
         onAuthStateChanged(auth, user => {
             setUser(user)
             if(user){
-                const subcolref = collection(db, LOCATIONS_REF)
+                const subcolref = collection(db, USERS_REF, user.uid, LOCATIONS_REF)
                 onSnapshot(subcolref, QuerySnapshot => {
-                    setLocations(QuerySnapshot.docs.map(doc => ({
-                         id: doc.id, ...doc.data
-                    })))
+                    setLocations(QuerySnapshot.docs.map(doc => {
+                         return {id: doc.id, ...doc.data()}
+                    }))
                 })
             }
         })
@@ -30,14 +30,18 @@ export async function loginUser(email, password){
 
     try {
         await signInWithEmailAndPassword(auth, email, password)
+       
         } catch (error) {
             return error.message
         }
-
         return null
+        
+        
 }
+
 
 export function logoutUser() {
     signOut(auth)
         .catch(error => console.log(error.message))
+   
 }
