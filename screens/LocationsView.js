@@ -43,6 +43,9 @@ export default function LocationsView() {
 
   const styles = StyleSheet.create({
     LocationsStyle: {
-      marginLeft: 5, marginRight: 5, gap: 3
+      flex: 1,
+      backgroundColor: '#fff',
+      padding: 10,
+      gap: 5
     }
   });
